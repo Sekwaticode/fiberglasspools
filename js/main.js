@@ -159,3 +159,27 @@
         });
       });
       
+//form to whatsapp
+document.getElementById("sendWhatsAppButton").addEventListener("click", function () {
+    // Get form values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    // Validate required fields
+    if (!name || !email || !subject || !message) {
+        alert("Please fill out all fields before sending.");
+        return;
+    }
+
+    // Construct WhatsApp message
+    const whatsappMessage = `Hello!%0A%0AMy Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ASubject: ${encodeURIComponent(subject)}%0AMessage: ${encodeURIComponent(message)}`;
+
+    // Replace with the phone number to send the message to
+    const phoneNumber = "27785359200"; // Replace with your WhatsApp number (use country code without +)
+
+    // Redirect to WhatsApp
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+    window.open(whatsappURL, "_blank");
+});
